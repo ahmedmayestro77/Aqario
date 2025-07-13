@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts are now pulled in via a <link> tag in app/layout.tsx to avoid CSS @import fetch issues. */
+
+:root {
+  /* Light Mode Colors based on Aqario Palette */
+  --background: 0 0% 100%; /* White */
+  --foreground: 218 100% 15%; /* Very dark blue for text */
+
+  --card: 0 0% 100%; /* White */
+  --card-foreground: 218 100% 15%; /* Very dark blue */
+
+  --popover: 0 0% 100%; /* White */
+  --popover-foreground: 218 100% 15%; /* Very dark blue */
+
+  --primary: 218 100% 33%; /* Royal Blue #004aad */
+  --primary-foreground: 0 0% 100%; /* White text on primary */
+
+  --secondary: 0 0% 96%; /* Light gray for subtle backgrounds */
+  --secondary-foreground: 218 100% 15%; /* Very dark blue text on secondary */
+
+  --muted: 0 0% 96%; /* Light gray for muted backgrounds (e.g., form section) */
+  --muted-foreground: 218 100% 25%; /* Darker gray for muted text */
+
+  --accent: 30 100% 50%; /* Orange #ff8000 (used directly in tailwind.config) */
+  --accent-foreground: 218 100% 15%; /* Very dark blue text on accent */
+
+  --success: 160 49% 52%; /* Soft Green #43c59e (used directly in tailwind.config) */
+  --success-foreground: 0 0% 100%; /* White text on success */
+
+  --destructive: 0 84.2% 60.2%; /* Default red */
+  --destructive-foreground: 210 20% 98%; /* Default light text */
+
+  --border: 210 40% 90%; /* Light gray border */
+  --input: 210 40% 96%; /* Light gray input background */
+  --ring: 218 100% 33%; /* Royal Blue for focus ring */
+
+  --radius: 0.5rem;
+}
+
+/* Removed @media (prefers-color-scheme: dark) block */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Arabic font support */
+.rtl {
+  font-family: "Cairo", "Tajawal", "Noto Kufi Arabic", sans-serif;
+}
+
+.ltr {
+  font-family: "Inter", sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* RTL specific adjustments */
+.rtl input,
+.rtl textarea,
+.rtl select {
+  text-align: right;
+}
+
+.rtl .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* WhatsApp button pulse animation */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-gentle {
+  animation: pulse 2s infinite;
+}
